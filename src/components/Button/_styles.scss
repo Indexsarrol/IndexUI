@@ -1,0 +1,75 @@
+.idx-btn {
+    position: relative;
+    display: inline-block;
+    font-weight: $btn-font-weight;
+    line-height: $btn-line-height;
+    color: $body-color;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: $btn-border-width solid transparent;
+    @include button-size($btn-padding-x, $btn-padding-y, $btn-font-size, $border-radius);
+    box-shadow: $btn-box-shadow;
+    cursor: pointer;
+    transition: $btn-transition;
+    &.disabled,
+    &[disabled] {
+        cursor: not-allowed;
+        opacity: $btn-disabled-opacity;
+        box-shadow: none;
+        > * {
+            pointer-events: none;
+        }
+    }
+}
+
+.idx-btn-large {
+    @include button-size($btn-padding-x-lg, $btn-padding-y-lg, $btn-font-size-lg, $btn-border-radius-lg);
+}
+
+.idx-btn-small {
+    @include button-size($btn-padding-x-sm, $btn-padding-y-sm, $btn-font-size-sm, $btn-border-radius-sm);
+}
+
+.idx-btn-default {
+    @include button-style ($white, $primary, $primary, solid)
+}
+
+.idx-btn-primary {
+    @include button-style ($primary,$primary, $white, solid)
+}
+
+.idx-btn-dashed {
+    @include button-style($white, $border-color, $gray-900, dashed)
+}
+
+.idx-btn-danger {
+    @include button-style($red, $red, $white, solid)
+}
+
+.idx-btn-warning {
+    @include button-style($yellow, $yellow, $white, solid)
+}
+
+.idx-btn-link {
+    font-weight: $font-weight-normal;
+    color: $btn-link-color;
+    text-decoration: $link-decoration;
+    box-shadow: none;
+    &:hover {
+        color: $btn-link-hover-color;
+        text-decoration: $link-hover-decoration;
+    }
+    &:focus,
+    &.focus {
+        text-decoration: $link-hover-decoration;
+    }
+    &:disabled,
+    &.disabled {
+        color: $btn-link-disabled-color;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+}

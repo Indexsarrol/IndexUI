@@ -1,0 +1,39 @@
+.idx-alert {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 4px;
+    line-height: $alert-line-height;
+    font-size: $alert-font-size;
+    .idx-alert-message-content {
+        font-size: $alert-title-font-size;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .idx-alert-close-icon {
+            cursor: pointer;
+        }
+        > .hidden {
+            display: none;
+        }
+    }
+    .idx-alert-description {
+        margin-top: 10px;
+        text-align: left;
+    }
+}
+
+.idx-alert-default {
+    @include alert-style($blue, $blue, $white)
+}
+
+.idx-alert-success {
+    @include alert-style($green, $green, $white)
+}
+
+.idx-alert-danger {
+    @include alert-style($red, $red, $white)
+}
+
+.idx-alert-warning {
+    @include alert-style($yellow, $yellow, $white)
+}

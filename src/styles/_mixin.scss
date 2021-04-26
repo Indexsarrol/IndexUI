@@ -1,0 +1,53 @@
+@mixin button-size($padding-x, $padding-y, $font-size, $border-radius) {
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    border-radius: $border-radius;
+}
+
+@mixin button-style(
+    $background,
+    $border,
+    $color,
+    $border-style,
+    $hover-background: lighten($background, 7.5%),
+    $hover-border: lighten($border, 10%),
+    $hover-color: $color
+) {
+    color: $color;
+    background: $background;
+    border-color: $border;
+    border-style: $border-style;
+    &:hover {
+        color: $hover-color;
+        border-color: $hover-border;
+        border-style: $border-style;
+        background: $hover-background;
+    }
+    &:focus,
+    &.focus {
+        color: $hover-color;
+        border-color: $hover-border;
+        background: $hover-background;
+        border-style: $border-style;
+        outline: none;
+    }
+    &:disabled,
+    &.disabled {
+        color: $gray-600;
+        border-color: $gray-500;
+        border-style: $border-style;
+        background: $gray-200;
+    }
+}
+
+
+// alert
+@mixin alert-style(
+    $background,
+    $border,
+    $color,
+) {
+    color: $color;
+    background: $background;
+    border-color: $border;
+}
