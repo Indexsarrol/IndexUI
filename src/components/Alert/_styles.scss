@@ -9,6 +9,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+        .idx-alert-message {
+            text-align: left;
+        }
         .idx-alert-close-icon {
             cursor: pointer;
         }

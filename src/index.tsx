@@ -1,3 +1,12 @@
+/*
+ * @Author: Indexsarrol
+ * @Date: 2021-04-23 10:15:37
+ * @LastEditTime: 2021-04-27 16:31:15
+ * @LastEditors: Indexsarrol
+ * @Description: 
+ * @FilePath: \index-ui\src\index.tsx
+ * 可以输入预定的版权声明、个性签名、空行等
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
@@ -10,8 +19,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

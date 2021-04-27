@@ -1,7 +1,7 @@
 /*
  * @Author: wujian
  * @Date: 2021-04-25 16:27:51
- * @LastEditTime: 2021-04-25 18:01:47
+ * @LastEditTime: 2021-04-26 17:11:32
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \index-ui\src\components\Alert\Alert.tsx
@@ -78,7 +78,7 @@ const Alert: React.FC<TAlertProps> = (props) => {
 			{...restProps}
 		>
 			<div className="idx-alert-message-content">
-				<span>{message}</span>
+				<span className="idx-alert-message">{message}</span>
 				<span
 					className={isShowClose}
 					onClick={handleClose}
