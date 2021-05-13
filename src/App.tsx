@@ -1,18 +1,19 @@
 /*
  * @Author: Indexsarrol
  * @Date: 2021-04-23 10:15:37
- * @LastEditTime: 2021-04-27 17:58:37
+ * @LastEditTime: 2021-05-13 17:05:43
  * @LastEditors: Indexsarrol
  * @Description: 
  * @FilePath: \index-ui\src\App.tsx
  */
-import React, { useState } from 'react';
-import Alert from './components/Alert/Alert';
+import React from 'react';
 import Menu from './components/Menu/Menu';
 import MenuItem from './components/Menu/MenuItem';
+import Icon from './components/Icon/icon';
 import './App.css';
-const  App: React.FC = () => (
+const App: React.FC = () => (
     <div className="App">
+      <Icon icon="redo" theme="primary" />
       <div style={{ width: 400, marginTop: 20 }}>
         <Menu defaultKey={1} mode="horizontal">
           <MenuItem index={0} disabled>link1</MenuItem>
