@@ -1,7 +1,7 @@
 /*
  * @Author: Indexsarrol
  * @Date: 2021-04-23 10:15:37
- * @LastEditTime: 2021-05-13 17:05:43
+ * @LastEditTime: 2021-05-14 08:53:35
  * @LastEditors: Indexsarrol
  * @Description: 
  * @FilePath: \index-ui\src\App.tsx
@@ -13,7 +13,7 @@ import Icon from './components/Icon/icon';
 import './App.css';
 const App: React.FC = () => (
     <div className="App">
-      <Icon icon="redo" theme="primary" />
+      <Icon icon="redo" theme="primary" spin/>
       <div style={{ width: 400, marginTop: 20 }}>
         <Menu defaultKey={1} mode="horizontal">
           <MenuItem index={0} disabled>link1</MenuItem>
