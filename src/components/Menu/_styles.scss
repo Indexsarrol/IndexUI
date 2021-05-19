@@ -50,7 +50,7 @@
     }
   }
   .idx-submenu {
-    display: none;
+    // display: none;
     list-style:none;
     padding-left: 0;
     white-space: nowrap;
@@ -60,13 +60,13 @@
       cursor: pointer;
       transition: $menu-transition;
       color: $body-color;
-      &.is-active, &:hover {
+      &.idx-menu-item-actived, &:hover {
         color: $menu-item-active-color !important;
       }
     }
   }
   .idx-submenu.menu-opened {
-    display: block;
+    // display: block;
   }
 }
 .idx-menu-horizontal {
