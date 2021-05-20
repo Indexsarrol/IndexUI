@@ -1,13 +1,15 @@
 /*
  * @Author: wujian
  * @Date: 2021-04-25 16:27:51
- * @LastEditTime: 2021-04-26 17:11:32
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-05-20 17:38:07
+ * @LastEditors: Indexsarrol
  * @Description: In User Settings Edit
  * @FilePath: \index-ui\src\components\Alert\Alert.tsx
  */
 
-import React, { ReactNode } from 'react';
+import React, { useState, ReactNode } from 'react';
+import Icon from '../Icon/icon';
+import Transition from '../Transition/Transition';
 import classnames from 'classnames';
 
 export enum AlertType {
@@ -28,7 +30,7 @@ interface IAlertProps {
 	message?: string | ReactNode;
 	closeText?: string | ReactNode;
 	afterClose?: () => void;
-	onClose?: (e: MouseEvent) => void
+	onClose?: () => void
 }
 
 type NativeElementProps = React.DOMAttributes<HTMLElement>;
@@ -42,14 +44,13 @@ const Alert: React.FC<TAlertProps> = (props) => {
 		closeText,
 		className,
 		delay,
-		afterClose,
 		onClose,
 		...restProps
 	} = props;
 
 	const prefix = 'idx-alert';
 	const CLOSE_ICON_CLASSNAME = 'idx-alert-close-icon';
-
+	const [hide, setHide] = useState(false);
 	const classes = classnames(prefix, className, {
 		[`${prefix}-${type}`]: type
 	});
@@ -59,20 +60,18 @@ const Alert: React.FC<TAlertProps> = (props) => {
 
 	// 关闭按钮
 	const handleClose = () => {
-		new Promise((resolve, reject) => {
-			const alertDom = document.querySelector('#idx-alert');
-			resolve('success');
-			alertDom?.remove();
-		}).then(_ => {
-			if (afterClose) {
-				setTimeout(() => {
-					afterClose();
-				}, delay);
-			}
-		})
+		if (onClose) {
+			onClose()
+		}
+		setHide(true);
 	}
 	return (
-		<div
+		<Transition
+			in={!hide}
+			timeout={300}
+			animation="zoom-in-top"
+		>
+			<div
 			id="idx-alert"
 			className={classes}
 			{...restProps}
@@ -92,13 +91,15 @@ const Alert: React.FC<TAlertProps> = (props) => {
 			}
 			
 		</div>
+		</Transition>
+		
 	)
 }
 
 Alert.defaultProps = {
 	type: AlertType.Default,
 	closable: false,
-	closeText: '关闭'
+	closeText: <Icon icon="times" />
 }
 
 export default Alert;
