@@ -9,6 +9,7 @@ $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000000 !default;
+$disabled:   rgba(0,0,0,0.25) !default;
 
 $blue:     #0d6efd !default;
 $indigo:   #6610f2 !default;
@@ -250,5 +251,18 @@ $menu-item-disabled-color:     $gray-600 !default;
 $submenu-box-shadow: 0 2px 4px 0 rgba(0,0,0,.12), 0 0 6px 0 rgba(0,0,0,.04);
 
 
-// 字体图标
+// 标签页
+$tabs-border-width:             $border-width !default;
+$tabs-border-color:             $border-color !default;
+$tabs-transition:               color .3s ease-in-out, border-color .3s ease-in-out !default;
+$tabs-card-transition:          border-color .3s ease-in-out, border-color .3s ease-in-out !default;
+
+// tabpane
+$tabpane-padding-y:          .5rem !default;
+$tabpane-padding-x:          1rem !default;
+$tabpane-active-color:       $primary !default;
+$tabpane-active-border-width: 2px !default;
+$tabpane-disabled-color:     $disabled !default;
+$tabpane-active-border-radius: $border-radius!default;
+
 

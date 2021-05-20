@@ -1,32 +1,26 @@
 /*
  * @Author: Indexsarrol
  * @Date: 2021-04-23 10:15:37
- * @LastEditTime: 2021-05-19 14:05:57
+ * @LastEditTime: 2021-05-20 17:16:16
  * @LastEditors: Indexsarrol
  * @Description: 
  */
 import React from 'react';
-import Menu from './components/Menu/Menu';
-import MenuItem from './components/Menu/MenuItem';
-import SubMenu from './components/Menu/SubMenu';
+import Tabs from './components/Tabs/Tabs';
+import TabPane from './components/Tabs/TabPane';
+import Icon from './components/Icon/icon';
 import './App.css';
 const App: React.FC = () => (
     <div className="App">
-      <div style={{ width: 400, marginTop: 20 }}>
-        <Menu 
-          defaultKey={'0'} 
-          mode="vertical"
-          defaultOpenMenus={['2']}
-          onSelect={(key) => { alert(key) }}
+      <div style={{ width: 600, marginTop: 20 }}>
+        <Tabs 
+          defaultKey="0" 
+          onChange={(active) => {console.log(active)}}
         >
-          <MenuItem>link1</MenuItem>
-          <MenuItem>link2</MenuItem>
-          <SubMenu title="dropdown">
-            <MenuItem>dropdown1</MenuItem>
-            <MenuItem>dropdown2</MenuItem>
-          </SubMenu>
-          <MenuItem>link3</MenuItem>
-        </Menu>
+          <TabPane tab="选项卡一" key="1">选项卡一内容</TabPane>
+          <TabPane tab="选项卡二" key="2" disabled>选项卡二内容</TabPane>
+          <TabPane tab="选项卡三" key="3">选项卡三内容</TabPane>
+        </Tabs>
       </div>
     </div>
   );
