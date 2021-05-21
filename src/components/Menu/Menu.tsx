@@ -1,7 +1,7 @@
 /*
  * @Author: Indexsarrol
  * @Date: 2021-04-27 09:41:42
- * @LastEditTime: 2021-05-19 09:52:55
+ * @LastEditTime: 2021-05-20 18:07:01
  * @LastEditors: Indexsarrol
  * @Description: 
  * @FilePath: \index-ui\src\components\Menu\Menu.tsx
@@ -15,79 +15,79 @@ type keyType = string;
 type SelectType = (activeKey: keyType) => void;
 
 interface MenuProps {
-    defaultKey: keyType;
-    className?: string;
-    mode?: MenuMode;
-    style?: React.CSSProperties;
-    defaultOpenMenus?: string[];
-    onSelect?: (activeKey: string) => void
+	defaultKey: keyType;
+	className?: string;
+	mode?: MenuMode;
+	style?: React.CSSProperties;
+	defaultOpenMenus?: string[];
+	onSelect?: (activeKey: string) => void
 }
 export interface IMenuContextProps {
-    key: keyType;
-    onSelect?: SelectType;
-    mode?: MenuMode;
-    defaultOpenMenus?: string[]
+	key: keyType;
+	onSelect?: SelectType;
+	mode?: MenuMode;
+	defaultOpenMenus?: string[]
 };
 
 export const MenuContext = createContext<IMenuContextProps>({ key: '0' });
 
 const Menu: React.FC<MenuProps> = (props) => {
-    const { 
-        defaultKey, 
-        className, 
-        mode, 
-        style, 
-        children,
-        defaultOpenMenus,
-        onSelect
-    } = props;
-    const [ currentKey, setCurrentKey ] = useState(defaultKey);
-    const handleClick = (key: keyType) => {
-        setCurrentKey(key);
-        if (onSelect) {
-            onSelect(key)
-        }
-    }
-    const transferContext: IMenuContextProps = {
-        key: currentKey ? currentKey : '0',
-        onSelect: handleClick,
-        mode,
-        defaultOpenMenus
-    }
-    const classNames = classnames('idx-menu', className, {
-        'idx-menu-vertical': mode === 'vertical',
-        'idx-menu-horizontal': mode !== 'vertical',
-    });
+	const {
+		defaultKey,
+		className,
+		mode,
+		style,
+		children,
+		defaultOpenMenus,
+		onSelect
+	} = props;
+	const [currentKey, setCurrentKey] = useState(defaultKey);
+	const handleClick = (key: keyType) => {
+		setCurrentKey(key);
+		if (onSelect) {
+			onSelect(key)
+		}
+	}
+	const transferContext: IMenuContextProps = {
+		key: currentKey ? currentKey : '0',
+		onSelect: handleClick,
+		mode,
+		defaultOpenMenus
+	}
+	const classNames = classnames('idx-menu', className, {
+		'idx-menu-vertical': mode === 'vertical',
+		'idx-menu-horizontal': mode !== 'vertical',
+	});
 
-    const renderChildren = () => {
-        return React.Children.map(children, (child, index) => {
-            const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
-            // childElement.type.displayName
-            const { displayName } = childElement.type;
-            if (displayName === 'MenuItem' || displayName === 'SubMenu') {
-                return React.cloneElement(childElement, {
-                    index: `${index}`
-                });
-            } else {
-                console.error('Menu组件的子组件只能为MenuItem组件');
-            }
-        })
-    }
+	const renderChildren = () => {
+		return React.Children.map(children, (child, index) => {
+			const childElement = child as React.FunctionComponentElement<IMenuItemProps>;
+			// childElement.type.displayName
+			const { displayName } = childElement.type;
+			if (displayName === 'MenuItem' || displayName === 'SubMenu') {
+				return React.cloneElement(childElement, {
+					index: `${index}`
+				});
+			} else {
+				console.error('Menu组件的子组件只能为MenuItem组件');
+			}
+		})
+	}
 
-    return (
-        <ul className={classNames} style={style}>
-            <MenuContext.Provider value={transferContext}>
-                {renderChildren()}
-            </MenuContext.Provider>
-        </ul>
-    );
+	return (
+		<ul className={classNames} style={style}>
+			<MenuContext.Provider value={transferContext}>
+				{renderChildren()}
+			</MenuContext.Provider>
+		</ul>
+	);
 }
 
 
 Menu.defaultProps = {
-    mode: 'horizontal',
-    defaultKey: '0',
-    defaultOpenMenus: []
+	mode: 'horizontal',
+	defaultKey: '0',
+	defaultOpenMenus: []
 }
 
 export default Menu;

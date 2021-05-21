@@ -3,39 +3,55 @@
 }
 .idx-tabs-top {
   .idx-tabs-bar {
+    width: 100%;
     height: 40px;
+    padding-left: 0;
+    margin-bottom: 10px;
     list-style: none;
     display: flex;
     align-items: center;
-    padding-left: 0;
-    justify-content: flex-start;
-    >.idx-tabs-tab {
-      cursor: pointer;
+    justify-content: space-between;
+    .idx-tabs-bar-container {
+      width: 100%;
       height: 100%;
-      &.idx-tabs-tab-active {
-        color: $tabpane-active-color;
-      }
-      &.idx-tabs-tab-disabled {
-        cursor: not-allowed;
-        color: $tabpane-disabled-color;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .idx-tabs-tab {
+        cursor: pointer;
+        height: 100%;
+        &.idx-tabs-tab-active {
+          color: $tabpane-active-color;
+        }
+        &.idx-tabs-tab-disabled {
+          cursor: not-allowed;
+          color: $tabpane-disabled-color;
+        }
       }
     }
+    
   }
   .idx-tabs-top-bar {
     border-bottom: $tabs-border-width solid $tabs-border-color;
-    >.idx-tabs-tab {
-      padding: $tabpane-padding-y $tabpane-padding-x;
-      border-bottom: $tabpane-active-border-width solid transparent;
-      &.idx-tabs-tab-active {
-        border-bottom: $tabpane-active-border-width solid $tabpane-active-color;
-      }
-      &.idx-tabs-tab-disabled {
-        cursor: not-allowed;
-        color: $tabpane-disabled-color;
+    .idx-tabs-bar-container {
+      >.idx-tabs-tab {
+        padding: $tabpane-padding-y $tabpane-padding-x;
+        border-bottom: $tabpane-active-border-width solid transparent;
+        &.idx-tabs-tab-active {
+          border-bottom: $tabpane-active-border-width solid $tabpane-active-color;
+        }
+        &.idx-tabs-tab-disabled {
+          cursor: not-allowed;
+          color: $tabpane-disabled-color;
+        }
       }
     }
+    
   }
+  
+  
 }
+
 .idx-tabs-bottom {
   display: flex;
   flex-direction: column-reverse;
@@ -49,34 +65,45 @@
     align-items: center;
     padding-left: 0;
     justify-content: flex-start;
-    >.idx-tabs-tab {
-      cursor: pointer;
+    .idx-tabs-bar-container {
+      width: 100%;
       height: 100%;
-      &.idx-tabs-tab-active {
-        color: $tabpane-active-color;
-      }
-      &.idx-tabs-tab-disabled {
-        cursor: not-allowed;
-        color: $tabpane-disabled-color;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      >.idx-tabs-tab {
+        cursor: pointer;
+        height: 100%;
+        &.idx-tabs-tab-active {
+          color: $tabpane-active-color;
+        }
+        &.idx-tabs-tab-disabled {
+          cursor: not-allowed;
+          color: $tabpane-disabled-color;
+        }
       }
     }
   }
   .idx-tabs-bottom-bar {
     border-top: $tabs-border-width solid $tabs-border-color;
     margin-top: 1rem;
-    >.idx-tabs-tab {
-      padding: $tabpane-padding-y $tabpane-padding-x;
-      border-top: $tabpane-active-border-width solid transparent;
-      &.idx-tabs-tab-active {
-        border-top: $tabpane-active-border-width solid $tabpane-active-color;
-      }
-      &.idx-tabs-tab-disabled {
-        cursor: not-allowed;
-        color: $tabpane-disabled-color;
+    .idx-tabs-bar-container {
+      >.idx-tabs-tab {
+        padding: $tabpane-padding-y $tabpane-padding-x;
+        border-top: $tabpane-active-border-width solid transparent;
+        &.idx-tabs-tab-active {
+          border-top: $tabpane-active-border-width solid $tabpane-active-color;
+        }
+        &.idx-tabs-tab-disabled {
+          cursor: not-allowed;
+          color: $tabpane-disabled-color;
+        }
       }
     }
   }
 }
+
+
 .idx-tabs-left {
   display: flex;
   align-items: flex-start;
@@ -195,34 +222,48 @@
   }
   .idx-tabs-top-bar {
     border-bottom: $tabs-border-width solid $tabs-border-color;
-    >.idx-tabs-tab {
-      padding: $tabpane-padding-y $tabpane-padding-x;
-      border-bottom: none;
-      margin-bottom: -1px;
-      &.idx-tabs-tab-active {
-        border: $tabs-border-width solid $tabs-border-color;
+    .idx-tabs-bar-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      >.idx-tabs-tab {
+        padding: $tabpane-padding-y $tabpane-padding-x;
         border-bottom: none;
         margin-bottom: -1px;
-        background-color: #fff;
-        border-top-left-radius: $tabpane-active-border-radius;
-        border-top-right-radius: $tabpane-active-border-radius;
+        &.idx-tabs-tab-active {
+          border: $tabs-border-width solid $tabs-border-color;
+          border-bottom: none;
+          margin-bottom: -1px;
+          background-color: #fff;
+          border-top-left-radius: $tabpane-active-border-radius;
+          border-top-right-radius: $tabpane-active-border-radius;
+        }
       }
     }
   }
   .idx-tabs-bottom-bar {
     border-top: $tabs-border-width solid $tabs-border-color;
-    >.idx-tabs-tab {
-      padding: $tabpane-padding-y $tabpane-padding-x;
-      border-bottom: none;
+    .idx-tabs-bar-container {
+      width: 100%;
       height: 100%;
-      margin-top: -2px;
-      &.idx-tabs-tab-active {
-        border: $tabs-border-width solid $tabs-border-color;
-        border-top: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      >.idx-tabs-tab {
+        padding: $tabpane-padding-y $tabpane-padding-x;
+        border-bottom: none;
+        height: 100%;
         margin-top: -2px;
-        background-color: #fff;
-        border-bottom-left-radius: $tabpane-active-border-radius;
-        border-bottom-right-radius: $tabpane-active-border-radius;
+        &.idx-tabs-tab-active {
+          border: $tabs-border-width solid $tabs-border-color;
+          border-top: none;
+          margin-top: -2px;
+          background-color: #fff;
+          border-bottom-left-radius: $tabpane-active-border-radius;
+          border-bottom-right-radius: $tabpane-active-border-radius;
+        }
       }
     }
   }

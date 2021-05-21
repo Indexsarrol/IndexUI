@@ -3,11 +3,12 @@
  * @Author: Indexsarrol
  * @Date: 2021-05-19 14:51:08
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-05-20 16:10:59
+ * @LastEditTime: 2021-05-21 10:34:51
  */
 
 import React, { useState } from 'react';
 import { ITabPaneProps } from './TabPane';
+import Button from '../Button/Button';
 import classnames from 'classnames';
 
 export type TabsType = 'line' | 'card';
@@ -20,11 +21,21 @@ export interface ITabsProps {
   style?: React.CSSProperties;
   type?: TabsType;
   tabPosition?: TabPosition;
+  tabBarExtraContent?: React.ReactNode;
   onChange: (key: string) => void
 }
 
 const Tabs: React.FC<ITabsProps> = (props) => {
-  const { defaultKey, className, tabPosition, style, children, onChange, type } = props;
+  const { 
+    defaultKey, 
+    className, 
+    tabPosition, 
+    style, 
+    children, 
+    onChange, 
+    type,
+    tabBarExtraContent
+  } = props;
   const [ currentKey, setCurrentKey ] = useState(defaultKey);
 
   const handleChange = (key: string) => {
@@ -41,8 +52,6 @@ const Tabs: React.FC<ITabsProps> = (props) => {
     [`idx-tabs-${tabPosition}-bar`]: tabPosition
   });
 
-
-
   const renderHeader = () => {
     return React.Children.map(children, (child, index) => {
       const childElement = child as React.FunctionComponentElement<ITabPaneProps>;
@@ -50,14 +59,14 @@ const Tabs: React.FC<ITabsProps> = (props) => {
       const tabsNavItemClasses = classnames('idx-tabs-tab', {
         'idx-tabs-tab-active': currentKey === index.toString(),
         'idx-tabs-tab-disabled': disabled
-      })
+      });
       return (
-        <li 
+        <div 
           className={tabsNavItemClasses} 
           onClick={disabled ? () => {} : () => {handleChange(index.toString())}}
         >
           {tab}
-        </li>
+        </div>
       );
     })
   }
@@ -70,20 +79,32 @@ const Tabs: React.FC<ITabsProps> = (props) => {
           return childElement;
         }
       } else {
-        console.error('Warning: Tabs component only accept TabPane component! ')
+        console.error('Warning: Tabs component only accept component! ')
       }
-      
     })
   }
   
   return (
     <div className={tabsClasses} style={style}>
-        <ul className={tabsNavClasses}>
-          {renderHeader()}
-        </ul>
-        <div className="idx-tabs-content">
-          {renderChildren()}
-        </div>
+      <div className={tabsNavClasses}>
+        {
+          tabPosition === "top" || tabPosition === "bottom"
+          ?
+          <>
+            <div className="idx-tabs-bar-container">
+            {renderHeader()}
+            </div>
+            <div className="idx-tabs-tab-bar-extra">
+              {tabBarExtraContent}
+            </div>
+          </>
+          :
+          renderHeader()
+        }
+      </div>
+      <div className="idx-tabs-content">
+        {renderChildren()}
+      </div>
     </div>
   );
 }
