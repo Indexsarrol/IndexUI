@@ -3,14 +3,14 @@
  * @Author: Indexsarrol
  * @Date: 2021-05-26 13:55:52
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-05-27 09:21:11
+ * @LastEditTime: 2021-05-27 09:51:37
  */
 
 import React from 'react';
 import Icon from '../Icon/icon';
 import classnames from 'classnames';
 
-const ref = React.createRef<HTMLInputElement>();
+const inputRef = React.createRef<HTMLInputElement>();
 
 type InputSize = 'small' | 'default' | 'large';
 
@@ -23,6 +23,7 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLElement>,
   defaultValue?: string;
   value?: string;
   allowClear?: boolean;
+  ref?:any;
   addonBefore?: string | React.ReactNode;
   addonAfter?: string | React.ReactNode;
   prefix?: string | React.ReactNode;
@@ -63,8 +64,8 @@ const Input: React.FC<InputProps> = (props) => {
   const addonAfterClasses = classnames('idx-input-afteraddon', addonAfterClassName);
 
   const clearInputValue = () => {
-    if (ref.current) {
-      ref.current.value = '';
+    if (inputRef.current) {
+      inputRef.current.value = '';
     }
   }
 
@@ -87,7 +88,7 @@ const Input: React.FC<InputProps> = (props) => {
         )
       }
       <input
-        ref={ref} 
+        ref={inputRef} 
         type="input"
         defaultValue={defaultValue}
         value={value}
