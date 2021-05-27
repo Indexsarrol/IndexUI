@@ -1,7 +1,7 @@
 /*
  * @Author: Indexsarrol
  * @Date: 2021-04-23 10:15:37
- * @LastEditTime: 2021-05-26 16:33:01
+ * @LastEditTime: 2021-05-27 09:41:22
  * @LastEditors: Indexsarrol
  * @Description: 
  */
@@ -11,6 +11,7 @@ import TabPane from './components/Tabs/TabPane';
 import Button from './components/Button/Button';
 import Icon from './components/Icon/icon';
 import Input from './components/Input/Input';
+import Search from './components/Input/Search';
 
 
 import './App.css';
@@ -24,11 +25,9 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <div style={{ width: 400, marginTop: 20 }}>
-        <Input
-          // prefix={<Icon icon="user" />}
+        <Search
+          onSearch={(value) => {console.log(value)}}
           value={value}
-          onChange={onChange}
-          allowClear
           placeholder="请输入内容"
         />
       </div>

@@ -5,6 +5,28 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+  .idx-input-beforeaddon {
+    height: 32px;
+    padding: $input-padding-y $input-padding-x;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    border-radius: $input-border-radius 0 0 $input-border-radius;
+    border: 1px solid $input-group-addon-border-color;
+    border-right: 0;
+  }
+  .idx-input-afteraddon {
+    height: 32px;
+    padding: $input-padding-y $input-padding-x;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fafafa;
+    border-radius: 0 $input-border-radius $input-border-radius 0;
+    border: 1px solid $input-group-addon-border-color;
+    border-left: 0;
+  }
   .idx-prefix-icon {
     position: absolute;
     height: 100%;
@@ -109,18 +131,64 @@
   .idx-input-inner-without-prefix {
     padding-right: 10px
   }
-  // .idx-input-inner-with-clear {
-  //   padding-right: 50px
-  // }
 }
+
+.idx-input-before-addon >input {
+  border-top-left-radius: 0!important;
+  border-bottom-left-radius: 0!important;
+}
+.idx-input-after-addon > input {
+  border-top-right-radius: 0!important;
+  border-bottom-right-radius: 0!important;
+}
+
+
 
 .idx-input-large .idx-input-inner {
   height: 40px;
   font-size: $input-font-size-lg;
   border-radius: $input-border-radius-lg;
 }
+
+.idx-input-large .idx-input-beforeaddon {
+  height: 40px;
+  font-size: $input-font-size-lg;
+}
+.idx-input-large .idx-input-afteraddon {
+  height: 40px;
+  font-size: $input-font-size-lg;
+}
+
 .idx-input-small .idx-input-inner {
   height: 24px;
   font-size: $input-font-size-sm;
   border-radius: $input-border-radius-sm;
+}
+
+.idx-input-small .idx-input-beforeaddon {
+  height: 24px;
+  font-size: $input-font-size-sm;
+}
+.idx-input-small .idx-input-afteraddon {
+  height: 24px;
+  font-size: $input-font-size-sm;
+}
+
+.idx-search {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  .idx-search-container {
+    background-color: $blue;
+    cursor: pointer;
+    .idx-search-btn {
+      width: 100%;
+      // padding: $input-padding-y $input-padding-x;
+      svg {
+        color: $white;
+      }
+    }
+  }
+  
 }
