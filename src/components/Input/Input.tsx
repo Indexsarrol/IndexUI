@@ -3,7 +3,7 @@
  * @Author: Indexsarrol
  * @Date: 2021-05-26 13:55:52
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-05-26 16:47:46
+ * @LastEditTime: 2021-05-27 09:21:11
  */
 
 import React from 'react';
@@ -17,11 +17,14 @@ type InputSize = 'small' | 'default' | 'large';
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLElement>, 'size' | 'prefix'> {
   style?: React.CSSProperties;
   className?: string;
+  addonAfterClassName?: string;
   size?: InputSize;
   disabled?: boolean;
   defaultValue?: string;
   value?: string;
   allowClear?: boolean;
+  addonBefore?: string | React.ReactNode;
+  addonAfter?: string | React.ReactNode;
   prefix?: string | React.ReactNode;
   suffix?: string | React.ReactNode;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
@@ -31,11 +34,14 @@ const Input: React.FC<InputProps> = (props) => {
   const {
     style,
     className,
+    addonAfterClassName,
     size,
     disabled,
     defaultValue,
     allowClear,
     value,
+    addonBefore,
+    addonAfter,
     prefix,
     suffix,
     ...restProps
@@ -44,6 +50,8 @@ const Input: React.FC<InputProps> = (props) => {
   const classes = classnames('idx-input-wrapper', {
     [`idx-input-${size}`]: size,
     'idx-input-disabled': disabled,
+    'idx-input-before-addon': addonBefore,
+    'idx-input-after-addon': addonAfter
   });
 
   const innerClasses = classnames('idx-input-inner', className, {
@@ -51,6 +59,8 @@ const Input: React.FC<InputProps> = (props) => {
     'idx-input-inner-without-suffix': !suffix,
     'idx-input-inner-with-clear': allowClear,
   });
+
+  const addonAfterClasses = classnames('idx-input-afteraddon', addonAfterClassName);
 
   const clearInputValue = () => {
     if (ref.current) {
@@ -60,10 +70,22 @@ const Input: React.FC<InputProps> = (props) => {
 
   return (
     <div className={classes}>
-      <span className="idx-prefix-icon">
-        {prefix}
-      </span>
+      {
+        addonBefore
+        &&
+        (
+          <div className="idx-input-beforeaddon">{addonBefore}</div>
+        )
+      }
       
+      {
+        prefix &&
+        ( 
+          <span className="idx-prefix-icon">
+            {prefix}
+          </span>
+        )
+      }
       <input
         ref={ref} 
         type="input"
@@ -84,10 +106,22 @@ const Input: React.FC<InputProps> = (props) => {
       }
       {
         suffix && 
-        <span className="idx-suffix-icon">
-          {suffix}
-        </span>
+        (
+          <span className="idx-suffix-icon">
+            {suffix}
+          </span>
+        )
       }
+      {
+        addonAfter
+        &&
+        (
+          <div className={addonAfterClasses}>
+            {addonAfter}
+          </div>
+        )
+      }
+      
       
     </div>
   );
