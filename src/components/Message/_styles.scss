@@ -1,0 +1,29 @@
+.idx-message-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  justify-content: flex-start;
+  .idx-message-icon {
+    width: 36px;
+    font-size: 16px;
+    &.info {
+      color: $primary;
+    }
+    &.success {
+      color: $success;
+    }
+    &.warning {
+      color: $warning;
+    }
+    &.error {
+      color: $danger;
+    }
+    &.loading {
+      color: $primary;
+    }
+  }
+  .idx-message-title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
