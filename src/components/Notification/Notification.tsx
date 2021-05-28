@@ -3,7 +3,7 @@
  * @Author: Indexsarrol
  * @Date: 2021-05-27 10:15:35
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-05-27 15:47:33
+ * @LastEditTime: 2021-05-28 11:13:52
  */
 
 import React from 'react';
@@ -123,9 +123,8 @@ const idxNotification = (function () {
           closeIcon
         }, (notice) => {
           return notification = notice
-        })
+        });
     }
-
   };
 
   const remove = (key: string) => {
