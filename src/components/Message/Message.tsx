@@ -103,7 +103,7 @@ const Message = (function() {
   
   const destroy = () => {
     message.destroy();
-  }
+  };
 
   Notification.newInstance({
     style: { top: '50px', left: '50%', transform: 'translate(-50%, 0)'  }

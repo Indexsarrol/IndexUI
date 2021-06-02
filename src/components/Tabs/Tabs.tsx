@@ -8,7 +8,6 @@
 
 import React, { useState } from 'react';
 import { ITabPaneProps } from './TabPane';
-import Button from '../Button/Button';
 import classnames from 'classnames';
 
 export type TabsType = 'line' | 'card';

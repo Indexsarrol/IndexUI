@@ -32,7 +32,7 @@ const App: React.FC = () => {
       duration: 0,
       message: 'Notification Title',
       description: ' will never close automatically. I will be close automatically. I will never close automatically.',
-    })
+    });
   }
 
   const alertMessage = () => {
