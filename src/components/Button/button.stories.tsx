@@ -3,17 +3,21 @@
  * @Author: Indexsarrol
  * @Date: 2021-06-08 15:42:44
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-06-08 17:47:33
+ * @LastEditTime: 2021-06-09 09:39:46
  */
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Button, { ButtonProps } from './Button';
+
+/**
+ * Primary UI component for user interaction
+ */
 import '../../styles/index.scss';
 export default {
   title: 'Button',
-  component: Button,
+  component: Button
 } as Meta;
 
 const defaultStyle = {

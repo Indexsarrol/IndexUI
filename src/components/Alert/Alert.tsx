@@ -1,7 +1,7 @@
 /*
  * @Author: wujian
  * @Date: 2021-04-25 16:27:51
- * @LastEditTime: 2021-05-20 17:38:07
+ * @LastEditTime: 2021-06-09 10:51:33
  * @LastEditors: Indexsarrol
  * @Description: In User Settings Edit
  * @FilePath: \index-ui\src\components\Alert\Alert.tsx
@@ -21,15 +21,34 @@ export enum AlertType {
 
 // export type AlertType = 'success' | 'default' | 'danger' | 'warning';
 
-interface IAlertProps {
+export interface IAlertProps {
+	/**
+	 * 指定警告提示的样式，有四种选择 `success`、`info`、`warning`、`error`。
+	 */
 	type?: string;
+	/**
+	 * 指定警告提示的类名。
+	 */
 	className?: string;
+	/**
+	 * 指定警告提示是否可以关闭。
+	 */
 	closable?: boolean;
-	delay?: number;
+	/**
+	 * 指定警告提示描述内容。
+	 */
 	description?: string;
-	message?: string | ReactNode;
+	/**
+	 * 指定警告提示标题内容。
+	 */
+	message?: ReactNode | string;
+	/**
+	 * 指定警告提示自定义关闭按钮，仅当closable为true时生效。
+	 */
 	closeText?: string | ReactNode;
-	afterClose?: () => void;
+	/**
+	 * 指定警告提示点击关闭按钮回调函数，仅当closable为true时生效。
+	 */
 	onClose?: () => void
 }
 
@@ -43,7 +62,6 @@ const Alert: React.FC<TAlertProps> = (props) => {
 		message,
 		closeText,
 		className,
-		delay,
 		onClose,
 		...restProps
 	} = props;
@@ -97,7 +115,7 @@ const Alert: React.FC<TAlertProps> = (props) => {
 }
 
 Alert.defaultProps = {
-	type: AlertType.Default,
+	type: 'default',
 	closable: false,
 	closeText: <Icon icon="times" />
 }
