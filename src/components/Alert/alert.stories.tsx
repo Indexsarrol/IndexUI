@@ -3,14 +3,13 @@
  * @Author: Indexsarrol
  * @Date: 2021-06-09 10:18:10
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-06-09 10:46:44
+ * @LastEditTime: 2021-06-09 11:10:40
  */
 
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
+import { Meta } from '@storybook/react';
 
-import Alert, { IAlertProps } from './Alert';
+import Alert from './Alert';
 import Icon from '../Icon/icon';
 import message from '../Message/Message';
 
