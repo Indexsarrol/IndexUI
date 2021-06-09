@@ -1,7 +1,7 @@
 /*
  * @Author: Indexsarrol
  * @Date: 2021-04-27 09:41:42
- * @LastEditTime: 2021-05-20 18:07:01
+ * @LastEditTime: 2021-06-09 14:04:56
  * @LastEditors: Indexsarrol
  * @Description: 
  * @FilePath: \index-ui\src\components\Menu\Menu.tsx
@@ -15,12 +15,30 @@ type keyType = string;
 type SelectType = (activeKey: keyType) => void;
 
 interface MenuProps {
+	/**
+	 * 设置菜单默认展开项
+	 */
 	defaultKey: keyType;
+	/**
+	 * 设置菜单类名
+	 */
 	className?: string;
+	/**
+	 * 设置菜单类型，可选值：
+	 */
 	mode?: MenuMode;
+	/**
+	 * 设置菜单样式
+	 */
 	style?: React.CSSProperties;
+	/**
+	 * 设置菜单默认展开项，仅在mode为vertical时生效
+	 */
 	defaultOpenMenus?: string[];
-	onSelect?: (activeKey: string) => void
+	/**
+	 * 切换菜单回调函数
+	 */
+	onSelect?: (activeKey: string) => void;
 }
 export interface IMenuContextProps {
 	key: keyType;

@@ -3,7 +3,7 @@
  * @Author: Indexsarrol
  * @Date: 2021-06-09 11:15:44
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-06-09 11:29:18
+ * @LastEditTime: 2021-06-09 13:44:46
  */
 import React from 'react';
 import { Meta } from '@storybook/react';
@@ -52,4 +52,5 @@ export const SwitchWithText = () => (
 		<Switch defaultChecked checkedText="1" unCheckedText="0"/>
 	</>
 );
+SwitchWithText.storyName = '带有文字或者图标';
 
