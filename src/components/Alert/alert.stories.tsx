@@ -12,6 +12,7 @@ import { Meta } from '@storybook/react';
 import Alert from './Alert';
 import Icon from '../Icon/icon';
 import message from '../Message/Message';
+import Notification from '../Notification/Notification';
 
 import '../../styles/index.scss';
 export default {
@@ -77,7 +78,13 @@ export const closeCallbackAlert = () => (
 			message="这是一条普通的警告信息！"
 			description="我是描述我是描述我是描述我是描述"
 			closable
-			onClose={() => message.open({ type: 'info', title: 'do somthing' })}
+			onClose={() => Notification.open({ type: 'success', message: 'do somthing' })}
+		/>
+		<Alert
+			message="这是一条普通的警告信息！"
+			description="我是描述我是描述我是描述我是描述"
+			closable
+			onClose={() => message.open({ type: 'success', title: 'do somthing' })}
 		/>
 	</div>
 );
