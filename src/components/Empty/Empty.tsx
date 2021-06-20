@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import defaultSVG from '../../images/empty.svg';
+import defaultSVG from 'https://cdn.jsdelivr.net/gh/Indexsarrol/image/blogs/empty.svg';
 
 export interface IEmptyProps {
 	description?: string;
@@ -22,7 +22,7 @@ const Empty: React.FC<IEmptyProps> = (props) => {
 			{
 				!image
 				?
-				<img style={imageStyle} className="idx-empty-img" src={defaultSVG} alt="empty" />
+				<img style={imageStyle} className="idx-empty-img" src={'https://cdn.jsdelivr.net/gh/Indexsarrol/image/blogs/empty.svg'} alt="empty" />
 				:
 				image
 			}

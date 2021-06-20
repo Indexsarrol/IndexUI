@@ -32,3 +32,36 @@
         }
     }
 }
+
+.story-h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+.story-h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.story-h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.story-code {
+    display: inline-block;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.story-tips {
+    font-size: 14px;
+}
+
+.story-ul {
+    font-size: 14px;
+    list-style-type: circle;
+    >li {
+        line-height: 28px;
+    }
+}

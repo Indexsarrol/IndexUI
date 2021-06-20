@@ -14,7 +14,7 @@ type MenuMode = 'horizontal' | 'vertical';
 type keyType = string;
 type SelectType = (activeKey: keyType) => void;
 
-interface MenuProps {
+export interface MenuProps {
 	/**
 	 * 设置菜单默认展开项
 	 */
