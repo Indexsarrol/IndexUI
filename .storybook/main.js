@@ -8,6 +8,7 @@
 module.exports = {
   "stories": [
     "../src/components/**/*.stories.mdx",
+    "../src/*.stories.@(js|jsx|ts|tsx)",
     "../src/components/**/*.stories.@(js|jsx|ts|tsx)"
   ],
   "addons": [
