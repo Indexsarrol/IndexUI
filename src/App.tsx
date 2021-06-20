@@ -21,7 +21,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <div style={{ width: 400, marginTop: 20 }}>
-        <Empty />
+        <Button onClick={() => { message.open({ type: 'success', title: 'message!!!' })}}>按钮</Button>
+        <Button onClick={() => { notification.open({ type: 'success', message: 'message!!!' })}}>按钮</Button>
       </div>
     </div>
   );

@@ -43,18 +43,18 @@
   text-decoration: none;
 }
 
-.rc-notification-fade-appear {
-  animation: moveLeft .3s;
-}
-.rc-notification-fade-leave {
-  animation: moveOutLeft .3s;
-}
-.rc-notification-fade-appear.rc-notification-fade-appear-active {
-  animation: moveLeft .3s;
-}
-.rc-notification-fade-leave.rc-notification-fade-leave-active {
-  animation: moveOutLeft .3s;
-}
+// .rc-notification-fade-appear {
+//   animation: moveLeft .3s;
+// }
+// .rc-notification-fade-leave {
+//   animation: moveOutLeft .3s;
+// }
+// .rc-notification-fade-appear.rc-notification-fade-appear-active {
+//   animation: moveLeft .3s;
+// }
+// .rc-notification-fade-leave.rc-notification-fade-leave-active {
+//   animation: moveOutLeft .3s;
+// }
 
 @keyframes moveOutLeft {
   0% {
