@@ -1,6 +1,6 @@
 {
-  "name": "indexsarrol",
-  "version": "0.1.0",
+  "name": "idx-ui",
+  "version": "0.1.1",
   "description": "一款轻量级的基于React的组件库",
   "author": "indexsarrol",
   "private": false,
