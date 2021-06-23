@@ -78,3 +78,21 @@
     transform-origin: $origin;
   }
 }
+@mixin fade-animation(
+  $type: 'fade-in'
+) {
+  .#{$type}-enter {
+    opacity: 0;
+  }
+  .#{$type}-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  .#{$type}-exit {
+    opacity: 1;
+  }
+  .#{$type}-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+}
