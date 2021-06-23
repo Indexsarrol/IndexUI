@@ -3,11 +3,12 @@
  * @Author: Indexsarrol
  * @Date: 2021-06-22 15:45:17
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-06-22 17:24:22
+ * @LastEditTime: 2021-06-23 18:06:23
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import classnames from 'classnames';
+import Button, { IButtonProps } from '../Button/Button';
 import Icon from '../Icon';
 import Transition from '../Transition';
 import ReactDOM from 'react-dom';
@@ -18,48 +19,148 @@ export interface IModalProps {
 	title: string;
 	visible: boolean;
 	width?: string | number;
+	top?: number;
+	/**是否支持键盘ESC关闭 */
+	keyboard?: boolean;
+	/** 是否显示遮罩 */
+	mask?: boolean;
+	/** 点击蒙层是否允许关闭 */
+	maskClosable?: boolean;
+	/**遮罩样式 */
+	maskStyle?: React.CSSProperties;
+	closable?: boolean;
+	closeIcon?: React.ReactNode;
 	className?: string;
 	children: React.ReactNode;
 	style?: React.CSSProperties;
+	footer?: React.ReactNode;
+	okButtonProps?: IButtonProps;
+	cancelButtonProps?: IButtonProps;
+	cancelText?: string | React.ReactNode;
+	okText?: string | React.ReactNode;
+	okType?: string;
+	onOk: () => void;
 	onClose: () => void;
 }
 
+
+// 遮罩层
+const renderMask = (props: IModalProps): React.ReactNode => {
+	const {
+		mask, 
+		maskClosable, 
+		maskStyle, 
+		visible, 
+		onClose
+	} = props;
+	const modalMaskClasses = classnames(`${suffix}-mask`);
+	const closeMask = () => {
+		maskClosable && onClose();
+	}
+	return (
+		<>
+			{
+				mask && 
+				<Transition in={visible} timeout={300} animation="fade">
+					<div style={maskStyle} onClick={() => closeMask()} className={modalMaskClasses}></div>
+				</Transition>
+			}
+		</>
+	);
+}
+
+// 底部footer
+const renderFooter = (props: IModalProps): React.ReactNode => {
+	const { 
+		footer,
+		cancelText,
+		okText,
+		okButtonProps,
+		okType,
+		cancelButtonProps,
+		onClose, 
+		onOk 
+	} = props;
+	return (
+		<>
+			{
+				footer &&
+				<div className={`${suffix}-footer`}>
+					<Button {...cancelButtonProps} onClick={() => onClose()}>{cancelText}</Button>
+					<Button {...okButtonProps} btnType={okType} onClick={() => onOk()}>{okText}</Button>
+				</div>
+			}
+		</>
+	);
+}
+
 const renderContent = (props: IModalProps): React.ReactNode => {
-	const { visible, width, onClose } = props;
-	const modalMaskClasses = classnames(`${suffix}-mask`, {
-		[`${suffix}-mask-hidden`]: !visible
-	});
+	const { 
+		top, 
+		title, 
+		visible,
+		closable, 
+		width, 
+		closeIcon, 
+		onClose
+	} = props;
 	return (
 		<div>
-				<div className={`${suffix}-root`}>
-					<div className={modalMaskClasses}></div>
-					<div className={`${suffix}-wrapper`} style={{ width, display: visible ? '' : 'none' }}>
+			<div className={`${suffix}-root`}>
+			  { renderMask(props) }
+				<Transition in={visible} timeout={300} animation="zoom-in-center">
+					<div className={`${suffix}-wrapper`} style={{ width, top }}>
 						<div className={`${suffix}-content`}>
 							<div className={`${suffix}-header`}>
-								<span className={`${suffix}-title`}>标题</span>
-								<span className={`${suffix}-close`} onClick={() => onClose()}>
-									<Icon icon="times" />
-								</span>
+								<span className={`${suffix}-title`}>{title}</span>
+								{
+									closable &&
+									<span className={`${suffix}-close`} onClick={() => onClose()}>
+										{ closeIcon || <Icon icon="times" /> }
+									</span>
+								}
+								
 							</div>
 							<div className={`${suffix}-body`}>
 								{props.children}
 							</div>
-							<div className={`${suffix}-footer`}>底部</div>
+							{ renderFooter(props) }
 						</div>
 					</div>
-				</div>
+				</Transition>
+			</div>
 		</div>
 	);
 }
 
 const Modal: React.FC<IModalProps> = (props) => {
+	const { visible, onClose, keyboard } = props;
+	
+	useEffect(() => {
+		if (keyboard) {
+			window.addEventListener('keyup', function(e) {
+				if (visible && e.keyCode === 27) onClose();
+			});
+			return () => {
+				window.removeEventListener('keyup', () => {})
+			}
+		}
+	})
 	return (
 		ReactDOM.createPortal(renderContent(props), document.body)
 	);
 }
 
 Modal.defaultProps = {
-	width: 600
+	width: 600,
+	keyboard: true,
+	closable: true,
+	mask: true,
+	maskClosable: true,
+	footer: true,
+	cancelText: '取消',
+	okText: '确定',
+	okType: 'primary'
 }
 
 export default Modal;

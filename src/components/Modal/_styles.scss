@@ -2,7 +2,6 @@ $modal-suffix: 'idx-modal';
 .#{$modal-suffix} {
 	&-root {
 		width: 100%;
-		
 	}
 	&-mask {
 		position: fixed;
@@ -10,7 +9,7 @@ $modal-suffix: 'idx-modal';
 		left: 0;
 		right: 0;
 		bottom: 0;
-		z-index: 1000;
+		z-index: 999!important;
 		height: 100%;
 		background-color: rgba(0,0,0,.45);
 	}
@@ -19,22 +18,23 @@ $modal-suffix: 'idx-modal';
 	}
 	&-wrapper {
 		-webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    color: rgba(0,0,0,.65);
-    font-size: 14px;
-    font-variant: tabular-nums;
-    line-height: 1.5;
-    list-style: none;
-    -webkit-font-feature-settings: 'tnum';
-    font-feature-settings: 'tnum';
-    position: relative;
-    top: 100px;
-    width: auto;
-    margin: 0 auto;
-    padding-bottom: 24px;
-    pointer-events: none;
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		color: rgba(0,0,0,.65);
+		font-size: 14px;
+		font-variant: tabular-nums;
+		line-height: 1.5;
+		list-style: none;
+		-webkit-font-feature-settings: 'tnum';
+		font-feature-settings: 'tnum';
+		position: relative;
+		top: 100px;
+		width: auto;
+		margin: 0 auto;
+		padding-bottom: 24px;
+		pointer-events: none;
+		z-index: 1000!important;
 	}
 	&-content {
 		position: relative;
@@ -44,7 +44,7 @@ $modal-suffix: 'idx-modal';
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0,0.15);
     pointer-events: auto;
-		z-index: 10001;
+		
 	}
 	&-header {
 		position: relative;
@@ -91,5 +91,11 @@ $modal-suffix: 'idx-modal';
     background: 0 0;
     border-top: 1px solid #e8e8e8;
     border-radius: 0 0 4px 4px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		>button:nth-child(2) {
+			margin-left: 10px;
+		}
 	}
 }

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-04-23 14:26:21
- * @LastEditTime: 2021-06-09 10:16:24
+ * @LastEditTime: 2021-06-23 17:09:45
  * @LastEditors: Indexsarrol
  * @Description: In User Settings Edit
  * @FilePath: \index-ui\src\components\Button\Button.tsx
@@ -36,7 +36,7 @@ export interface IButtonProps {
 	 * 点击跳转的地址，指定此属性 button 的行为和 a 链接一致，只在btnType为`link`时生效。
 	 */
 	href?: string
-	children: React.ReactNode
+	children?: React.ReactNode
 }
 
 
