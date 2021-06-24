@@ -3,7 +3,7 @@
  * @Author: Indexsarrol
  * @Date: 2021-06-22 15:48:32
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-06-23 18:05:35
+ * @LastEditTime: 2021-06-24 10:58:20
  */
 
 import React, { Fragment, useState } from 'react';
@@ -20,11 +20,16 @@ export default {
 
 export const BasicModal = () => {
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
   const closeModal = () => {
     setVisible(false)
   }
   const handleOk = () => {
-    message.open({title: '点击了确定！', type: 'info'})
+    setLoading(true);
+    setTimeout(() => {
+      setVisible(false);
+      setLoading(false);
+    }, 3000)
   }
   return (
     <>
@@ -34,6 +39,7 @@ export const BasicModal = () => {
           title="全局控制器"
           visible={visible}
           onOk={handleOk}
+          confirmLoading={loading}
           onClose={closeModal}
         >
           <Button>1234</Button>

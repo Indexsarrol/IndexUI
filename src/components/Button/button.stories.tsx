@@ -3,7 +3,7 @@
  * @Author: Indexsarrol
  * @Date: 2021-06-08 15:42:44
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-06-09 09:39:46
+ * @LastEditTime: 2021-06-24 11:31:27
  */
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
@@ -265,3 +265,53 @@ export const ButtonDisabled = () => {
 }
 
 ButtonDisabled.storyName = '按钮不可用'
+
+export const ButtonLoading = () => (
+	<>
+		<Button 
+			onClick={action('clicked')} 
+			style={defaultStyle}
+			loading
+		>
+			default
+		</Button>
+
+		<Button
+			btnType="primary" 
+			onClick={action('clicked')} 
+			style={defaultStyle}
+			loading
+		>
+			primary
+		</Button>
+
+		<Button
+			btnType="dashed" 
+			onClick={action('clicked')} 
+			style={defaultStyle}
+			loading
+		>
+			dashed
+		</Button>
+
+		<Button
+			btnType="danger" 
+			onClick={action('clicked')} 
+			style={defaultStyle}
+			loading
+		>
+			danger
+		</Button>
+
+		<Button
+			btnType="warning" 
+			onClick={action('clicked')} 
+			style={defaultStyle}
+			loading
+		>
+			warning
+		</Button>
+		
+	</>
+);
+ButtonLoading.storyName = '加载中'
