@@ -24,6 +24,13 @@
     }
 }
 
+.idx-btn-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
 .idx-btn-large {
     @include button-size($btn-padding-x-lg, $btn-padding-y-lg, $btn-font-size-lg, $btn-border-radius-lg);
 }

@@ -1,20 +1,22 @@
 /*
  * @Author: your name
  * @Date: 2021-04-23 14:26:21
- * @LastEditTime: 2021-06-23 17:09:45
+ * @LastEditTime: 2021-06-24 10:55:09
  * @LastEditors: Indexsarrol
  * @Description: In User Settings Edit
  * @FilePath: \index-ui\src\components\Button\Button.tsx
  */
 import React from 'react';
+import Icon from '../Icon';
+import {
+	IconProp,
+  } from '@fortawesome/fontawesome-svg-core'
 import classnames from 'classnames';
 
 export type ButtonType = 'default' | 'primary' | 'link' | 'dashed' | 'danger' | 'warning'
 
-export enum ButtonSize {
-	Large = 'large',
-	Small = 'small'
-}
+export type ButtonSize = 'large' | 'small';
+
 export interface IButtonProps {
 	/**
 	 * 设置按钮类名
@@ -23,11 +25,11 @@ export interface IButtonProps {
 	/**
 	 * 设置按钮类型，可选值为 `primary`， `link`， `dashed`， `danger`， `warning`。
 	 */
-	btnType?: string,
+	btnType?: ButtonType,
 	/**
 	 * 设置按钮尺寸，可选值为 `large`， `small`，默认值为`default`。
 	 */
-	size?: string,
+	size?: ButtonSize,
 	/**
 	 * 按钮失效状态
 	 */
@@ -35,7 +37,9 @@ export interface IButtonProps {
 	/**
 	 * 点击跳转的地址，指定此属性 button 的行为和 a 链接一致，只在btnType为`link`时生效。
 	 */
-	href?: string
+	href?: string;
+	icon?: IconProp;
+	loading?: boolean;
 	children?: React.ReactNode
 }
 
@@ -53,6 +57,8 @@ const Button: React.FC<ButtonProps> = (props) => {
 		disabled,
 		href,
 		children,
+		loading,
+		icon,
 		...restProps
 	} = props;
 	const prefix = 'idx-btn';
@@ -77,9 +83,15 @@ const Button: React.FC<ButtonProps> = (props) => {
 			<button
 				{...restProps}
 				className={classNames}
-				disabled={disabled}
+				disabled={loading || disabled}
 			>
-				{children}
+				<div className={`${prefix}-wrapper`}>
+					{ loading && <Icon icon="spinner" spin style={{ marginRight: 6 }}/> }
+					<span>
+						{ icon && <Icon icon={icon} style={{ marginRight: 6 }} /> }
+					</span>
+					<span>{children}</span>
+				</div>
 			</button>
 		)
 	}

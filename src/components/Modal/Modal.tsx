@@ -3,12 +3,13 @@
  * @Author: Indexsarrol
  * @Date: 2021-06-22 15:45:17
  * @LastEditors: Indexsarrol
- * @LastEditTime: 2021-06-23 18:06:23
+ * @LastEditTime: 2021-06-24 10:54:32
  */
 
 import React, { useEffect } from 'react';
 import classnames from 'classnames';
-import Button, { IButtonProps } from '../Button/Button';
+import Button, { IButtonProps, ButtonType } from '../Button/Button';
+import Draggable from 'react-draggable'; 
 import Icon from '../Icon';
 import Transition from '../Transition';
 import ReactDOM from 'react-dom';
@@ -38,7 +39,8 @@ export interface IModalProps {
 	cancelButtonProps?: IButtonProps;
 	cancelText?: string | React.ReactNode;
 	okText?: string | React.ReactNode;
-	okType?: string;
+	okType?: ButtonType;
+	confirmLoading?: boolean;
 	onOk: () => void;
 	onClose: () => void;
 }
@@ -78,6 +80,7 @@ const renderFooter = (props: IModalProps): React.ReactNode => {
 		okButtonProps,
 		okType,
 		cancelButtonProps,
+		confirmLoading,
 		onClose, 
 		onOk 
 	} = props;
@@ -87,7 +90,7 @@ const renderFooter = (props: IModalProps): React.ReactNode => {
 				footer &&
 				<div className={`${suffix}-footer`}>
 					<Button {...cancelButtonProps} onClick={() => onClose()}>{cancelText}</Button>
-					<Button {...okButtonProps} btnType={okType} onClick={() => onOk()}>{okText}</Button>
+					<Button loading={confirmLoading} {...okButtonProps} btnType={okType} onClick={() => onOk()}>{okText}</Button>
 				</div>
 			}
 		</>
@@ -119,7 +122,6 @@ const renderContent = (props: IModalProps): React.ReactNode => {
 										{ closeIcon || <Icon icon="times" /> }
 									</span>
 								}
-								
 							</div>
 							<div className={`${suffix}-body`}>
 								{props.children}
