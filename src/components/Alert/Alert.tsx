@@ -1,7 +1,7 @@
 /*
  * @Author: wujian
  * @Date: 2021-04-25 16:27:51
- * @LastEditTime: 2021-06-09 10:51:33
+ * @LastEditTime: 2021-06-25 10:33:10
  * @LastEditors: Indexsarrol
  * @Description: In User Settings Edit
  * @FilePath: \index-ui\src\components\Alert\Alert.tsx
